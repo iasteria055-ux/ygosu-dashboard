@@ -35,3 +35,15 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.io"
         git add -A
         git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update rankings" && git push)
+# ... (앞부분 생략)
+    - name: Run Crawler Script
+      run: python main.py
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.io"
+        # ★ 핵심: 여기서 index.html을 강제로 창고에 박아넣습니다!
+        git add index.html ygosu_prev_rank.csv ygosu_prev_rank_receive.csv
+        git commit -m "update dashboard" || echo "No changes"
+        git push
