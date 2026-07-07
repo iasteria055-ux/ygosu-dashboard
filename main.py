@@ -4,8 +4,8 @@ from supabase import create_client
 import os
 
 # 1. 환경 설정 (깃허브 Secret에 등록된 키를 사용합니다)
-SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+SUPABASE_URL = os.environ.get("https://vhxiziitdsegofwdwpqa.supabase.co")
+SUPABASE_KEY = os.environ.get("sb_secret_fv0jqM1nIbqAO5ov7y3dCg_hOTZVMA5")
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def get_data_from_ygosu():
