@@ -2,191 +2,49 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부우 게시판 미네랄 랭킹</title>
+    <title>MINERAL RANKING</title>
     <style>
-        /* DJMAX 감성 폰트 */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,900&family=Noto+Sans+KR:wght@500;700;900&display=swap');
-        
-        body {
-            /* 라이트 그레이 모눈종이 패턴 */
-            background-color: #f4f2f7;
-            background-image: linear-gradient(#e5e0f0 1px, transparent 1px), linear-gradient(90deg, #e5e0f0 1px, transparent 1px);
-            background-size: 20px 20px;
-            font-family: 'Noto Sans KR', sans-serif;
-            color: #2b1a5a;
-            margin: 0; padding: 40px 20px;
-            display: flex; justify-content: center;
-        }
-
-        .container { max-width: 1200px; width: 100%; }
-
-        /* 상단 헤더 */
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { 
-            font-family: 'Montserrat', sans-serif; font-style: italic; font-weight: 900; 
-            font-size: 52px; margin: 0; color: #2b1a5a; text-transform: uppercase; letter-spacing: -2px;
-            text-shadow: 4px 4px 0px #ffc107;
-        }
-        .header p { color: #666; font-weight: 700; margin-top: 10px; font-size: 16px; }
-
-        /* 좌우 패널 레이아웃 */
-        .board-wrapper {
-            display: flex; gap: 30px; flex-wrap: wrap;
-        }
-        
-        .panel {
-            flex: 1; min-width: 400px;
-            background: #ffffff;
-            border: 4px solid #2b1a5a;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 12px 12px 0px rgba(43, 26, 90, 0.1);
-        }
-
-        .panel-title {
-            font-family: 'Montserrat', 'Noto Sans KR', sans-serif; font-style: italic; font-weight: 900;
-            font-size: 32px; text-transform: uppercase;
-            padding-bottom: 15px; margin-bottom: 20px;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .give-panel .panel-title { color: #ff4d00; border-bottom: 6px solid #ff4d00; }
-        .recv-panel .panel-title { color: #00a8ff; border-bottom: 6px solid #00a8ff; }
-
-        /* 리스트 스크롤 영역 */
-        .list-box {
-            max-height: 700px; overflow-y: auto; padding-right: 10px;
-        }
-        .list-box::-webkit-scrollbar { width: 8px; }
-        .list-box::-webkit-scrollbar-thumb { background: #2b1a5a; border-radius: 4px; }
-
-        /* 리스트 한 줄 (유저 로우) */
-        .user-row {
-            display: flex; align-items: center; padding: 12px 10px; margin-bottom: 8px;
-            background: #fff; border: 2px solid #f4f2f7; border-radius: 12px;
-            transition: all 0.2s;
-        }
-        .user-row:hover {
-            transform: translateX(8px); border-color: #2b1a5a; background: #faf9fc;
-        }
-
-        /* 랭킹 뱃지 */
-        .col-rank {
-            width: 50px; text-align: center; font-family: 'Montserrat', sans-serif;
-            font-style: italic; font-weight: 900; font-size: 20px; color: #a0aeb5;
-        }
-        .rank-1 { color: #ffc107; font-size: 28px; text-shadow: 2px 2px 0px #2b1a5a; }
-        .rank-2 { color: #a0aeb5; font-size: 24px; text-shadow: 1px 1px 0px #2b1a5a; }
-        .rank-3 { color: #cd7f32; font-size: 22px; }
-
-        /* 프로필 아바타 */
-        .avatar {
-            width: 44px; height: 44px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; font-weight: 900; color: #fff;
-            margin-right: 15px; border: 3px solid #2b1a5a; flex-shrink: 0;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* 닉네임 */
-        .col-nick { flex: 1; font-size: 16px; font-weight: 900; }
-        .col-nick a { color: #2b1a5a; text-decoration: none; transition: color 0.2s; }
-        .col-nick a:hover { color: #ff4d00; text-decoration: underline; }
-
-        /* 미네랄 수치 */
-        .col-mineral {
-            font-family: 'Montserrat', sans-serif; font-style: italic; font-weight: 900;
-            font-size: 18px; text-align: right;
-        }
-        .val-give { color: #ff4d00; }
-        .val-recv { color: #00a8ff; }
-
-        #loading { text-align: center; font-size: 20px; font-weight: bold; width: 100%; margin-top: 50px; }
+        body { background: #0f0a1f; color: #fff; font-family: 'Montserrat', sans-serif; margin: 0; padding: 40px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; font-size: 50px; color: #ff4d00; text-shadow: 0 0 10px #ff4d00; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .card { background: #1a1236; border: 2px solid #ff4d00; border-radius: 15px; padding: 20px; }
+        .row { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid #332a5a; }
+        .val { color: #ffc107; font-weight: bold; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
+    <div class="container">
         <h1>MINERAL RANKING</h1>
-        <p>기부왕 및 일퀘왕 전체 누적 명예의 전당</p>
-    </div>
-
-    <div id="loading">데이터 창고 개방 중... 📡</div>
-
-    <div class="board-wrapper" id="board-content" style="display: none;">
-        <div class="panel give-panel">
-            <div class="panel-title">🛡️ GIVE KING</div>
-            <div class="list-box" id="give-list"></div>
-        </div>
-
-        <div class="panel recv-panel">
-            <div class="panel-title">📜 TAKE KING</div>
-            <div class="list-box" id="recv-list"></div>
+        <div class="grid">
+            <div class="card" id="give"><h2>GIVE KING</h2></div>
+            <div class="card" id="recv"><h2>TAKE KING</h2></div>
         </div>
     </div>
-</div>
 
-<script>
-    // 💡 여기에 본인의 URL과 KEY를 꼭 넣어주세요!
-    const SUPABASE_URL = "https://vhxiziitdsegofwdwpqa.supabase.co";
-    const SUPABASE_KEY = "sb_secret_fv0jqM1nIbqAO5ov7y3dCg_hOTZVMA5";
+    <script>
+        // 1. 여기에 본인의 수파베이스 Project URL을 넣으세요
+        const SUPABASE_URL = "https://vhxiziitdsegofwdwpqa.supabase.co";
+        // 2. 여기에 수파베이스 [Settings] -> [API]에서 확인한 'anon' 공개 키를 넣으세요
+        const SUPABASE_KEY = "sb_publishable_2W1zP9xviLmOdzkg2DkQgQ_nVIsIe7r";
 
-    // 프로필 색상 치트키
-    const gradients = [
-        "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
-        "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
-        "linear-gradient(135deg, #76b852 0%, #8DC26F 100%)",
-        "linear-gradient(135deg, #f1a7a1 0%, #f1cb91 100%)",
-        "linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)",
-        "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)",
-        "linear-gradient(135deg, #ffcfd2 0%, #d1c4e9 100%)"
-    ];
-    function getGradient(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        return gradients[Math.abs(hash) % gradients.length];
-    }
-
-    async function fetchData() {
-        try {
-            const res = await fetch(`${SUPABASE_URL}/rest/v1/ygosu_rank?select=*&limit=5000`, {
+        async function fetchRanking() {
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/ygosu_rank?select=*`, {
                 headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` }
             });
-            const allData = await res.json();
-            
-            // 데이터 집계
-            let aggregated = {};
-            allData.forEach(row => {
-                if (!aggregated[row.nickname]) {
-                    aggregated[row.nickname] = { nick: row.nickname, mid: row.member_id, give: 0, recv: 0 };
-                }
-                aggregated[row.nickname].give += row.give_mineral;
-                aggregated[row.nickname].recv += row.recv_mineral;
-            });
+            const data = await res.json();
 
-            // 기부왕 / 일퀘왕 배열 분리 및 정렬 (Top 50)
-            const users = Object.values(aggregated);
-            const giveList = users.filter(u => u.give > 0).sort((a, b) => b.give - a.give).slice(0, 50);
-            const recvList = users.filter(u => u.recv > 0).sort((a, b) => b.recv - a.recv).slice(0, 50);
+            // 기부왕 출력 (기부량 내림차순)
+            const giveList = data.sort((a,b) => b.give_mineral - a.give_mineral).slice(0, 15);
+            document.getElementById('give').innerHTML += giveList.map(r => 
+                `<div class="row"><span>${r.nickname}</span><span class="val">${r.give_mineral.toLocaleString()}</span></div>`).join('');
 
-            // 로딩 숨기고 보드판 띄우기
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('board-content').style.display = 'flex';
-
-            renderList(giveList, 'give-list', '+');
-            renderList(recvList, 'recv-list', '-');
-
-        } catch (error) {
-            document.getElementById('loading').innerText = "데이터 로드 실패. 주소와 키를 확인해주세요.";
+            // 일퀘왕 출력 (일퀘량 내림차순)
+            const recvList = data.sort((a,b) => b.recv_mineral - a.recv_mineral).slice(0, 15);
+            document.getElementById('recv').innerHTML += recvList.map(r => 
+                `<div class="row"><span>${r.nickname}</span><span class="val">${r.recv_mineral.toLocaleString()}</span></div>`).join('');
         }
-    }
-
-    function renderList(dataArr, elementId, sign) {
-        const container = document.getElementById(elementId);
-        if (dataArr.length === 0) {
-            container.innerHTML = "<div style='text-align:center; padding:30px; color:#666;'>데이터가 없습니다.</div>";
-            return;
-        }
-
-        let html = "";
+        fetchRanking();
+    </script>
+</body>
+</html>
